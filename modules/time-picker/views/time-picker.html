@@ -1,0 +1,58 @@
+<div class="lx-time" ng-class="{ 'lx-time--fixed-label': fixedLabel(),
+                                 'lx-time--with-icon': icon && fixedLabel() }">
+
+    <div class="text-field__icon" ng-if="icon && fixedLabel() ">
+        <i class="mdi mdi-{{ icon }}"></i>
+    </div>
+
+    <!-- Time picker input -->
+    <div class="lx-time__input-wrapper">
+        <lx-text-field class="lx-time-input" label="{{ label }}" ng-click="openPicker()">
+            <input type="text" ng-model="selected.model" ng-disabled="true">
+        </lx-text-field>
+    </div>
+
+    <!-- Time picker -->
+    <div class="lx-time-picker">
+        <div ng-if="ctrlData.isOpen">
+            <div class="lx-time-picker__header">
+                <div class="lx-time-picker__now">
+                    <span>{{ moment().format('HH:mm') }}</span>
+                </div>
+            </div>
+            <div class="lx-time-picker__current-time">
+                <div class="lx-time-picker__current-hour">
+                    <button class="btn btn--l btn--teal btn--icon" lx-ripple ng-click="previousHour()">
+                        <i class="mdi mdi-chevron-up"></i>
+                    </button>
+                    <div class="lx-time-picker__hour">
+                        <div class="btn btn--xl tc-white bgc-teal-600 btn--icon">
+                            <input type="text" class="lx-time-picker__manual-input" maxlength="2" ng-model="display.hours">
+                        </div>
+                    </div>
+                    <button class="btn btn--l btn--teal btn--icon" lx-ripple ng-click="nextHour()">
+                        <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="lx-time-picker__specator">:</div>
+                <div class="lx-time-picker__current-minute">
+                    <button class="btn btn--l btn--teal btn--icon" lx-ripple ng-click="previousMinute()">
+                        <i class="mdi mdi-chevron-up"></i>
+                    </button>
+                    <div class="lx-time-picker__minute">
+                        <div class="btn btn--xl tc-white bgc-teal-600 btn--icon">
+                            <input type="text" class="lx-time-picker__manual-input" maxlength="2" ng-model="display.minutes">
+                        </div>
+                    </div>
+                    <button class="btn btn--l btn--teal btn--icon" lx-ripple ng-click="nextMinute()">
+                        <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lx-time-picker__actions">
+                <button class="btn btn--m btn--teal btn--flat" lx-ripple ng-click="closePicker()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
